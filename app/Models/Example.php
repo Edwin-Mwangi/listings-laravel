@@ -10,7 +10,7 @@ namespace App\Models;
 //then in /database dir create a new file ie 'database.sqlite'
 //then set ur db-connection in .env to be the name of that file ie 'database.sqlite'
 
-class Listing {
+class Example {
     public static function all(){
         return [
             ['id'=>1,'type'=>'veg','base'=>'garlic crust'],
@@ -22,10 +22,10 @@ class Listing {
     //to show listing based on id manually
     public static function find($id) {
         //self used to access static methods in the class
-        $listings = self::all();
-        foreach($listings as $listing){
-            if($listing['id'] == $id){
-                return $listing;
+        $examples = self::all();
+        foreach($examples as $example){
+            if($example['id'] == $id){
+                return $example;
             }
         }
 

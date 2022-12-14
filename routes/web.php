@@ -1,7 +1,8 @@
 <?php
 
+use App\Models\Gigs;
+use App\Models\Example;
 use Illuminate\Support\Facades\Route;
-use App\Models\Listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +24,38 @@ Route::get('/', function () {
 
 //all listing
 Route::get('/examples', function () {
-    return view('examples',
+    return view('examples.examples',
     [
         'heading' => 'Latest Listing',
-        'listings' => Listing::all()
+        'listings' => Example::all()
     ]
 );
 });
 
 //single listing
 Route::get('/examples/{id}', function ($id) {
-    return view('example',
+    return view('examples.example',
     [
-        'listing' => Listing::find($id)
+        'listing' => Example::find($id)
+    ]
+);
+});
+
+//serious stuff
+Route::get('/listings', function () {
+    return view('Gigs.listings',
+    [
+        'heading' => 'Latest Listing',
+        'listings' => Gigs::all()
+    ]
+);
+});
+
+//single listing
+Route::get('/listings/{id}', function ($id) {
+    return view('Gigs.listing',
+    [
+        'listing' => Gigs::find($id)
     ]
 );
 });
