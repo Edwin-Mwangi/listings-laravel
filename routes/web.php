@@ -14,6 +14,9 @@ use App\Models\Listing;
 |
 */
 
+//database seeder injects dummy users(u can pass how many users) to db using faker library ...brad 54:13 
+//php artisan db:seed
+
 Route::get('/', function () {
     return view('welcome');
 });
