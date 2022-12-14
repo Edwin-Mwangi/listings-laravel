@@ -1,0 +1,11 @@
+1.implement user authentication(login and regiter)
+2.validation in login and register form(username, email, password)
+3.filter search show results based on search item
+4.filter listings based on certain tags eg vue tag clicked to show only vue projects
+5.pagination, to show next page gigs and so on
+6.used custom theme,with tailwind css
+7.single listings to view single projects
+8.Uploading imgs in form
+9 .Alpine.js used
+10.cloud functionality
+11.db seeders.
