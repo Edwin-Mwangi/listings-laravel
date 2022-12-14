@@ -4,6 +4,12 @@ namespace App\Models;
 //model created manually 
 // the model is then used in the route file
 
+//for us we are using mysql in xampp
+//you can view and choose which db options to use in /config/database.php
+//edit mysql eg to sqlite if that's what you're using ''default' => env('DB_CONNECTION', 'mysql')' 
+//then in /database dir create a new file ie 'database.sqlite'
+//then set ur db-connection in .env to be the name of that file ie 'database.sqlite'
+
 class Listing {
     public static function all(){
         return [
