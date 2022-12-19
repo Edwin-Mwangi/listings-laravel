@@ -52,10 +52,17 @@ Route::get('/listings', function () {
 });
 
 //single listing
+//we also handle the error to show 404 if listing is nonexistent
 Route::get('/listings/{id}', function ($id) {
-    return view('Gigs.listing',
-    [
-        'listing' => Gigs::find($id)
-    ]
-);
+    $listing = Gigs::find($id);
+    if($listing){
+        return view('Gigs.listing',
+            [
+                'listing' => $listing
+            ]
+        );
+    }else{
+        abort('404');
+    }
+
 });

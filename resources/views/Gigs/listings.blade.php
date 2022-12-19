@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+@include('partials._hero')
+@include('partials._search')
    <h1>{{$heading}}</h1>
    @foreach ($listings as $listing)
    <div class="bg-gray-50 border border-gray-200 rounded p-6">
@@ -9,7 +11,7 @@
               class="hidden w-48 mr-6 md:block"
               {{-- asset helper used to show image assets from public --}}
               {{-- similar to url() from anchor tags --}}
-              src="{{asset('images/acme.png')}}"
+              src="{{asset('images/no-image.png')}}"
               alt=""
           />
           <div>
