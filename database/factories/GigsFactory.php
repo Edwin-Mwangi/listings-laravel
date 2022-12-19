@@ -15,7 +15,7 @@ class GigsFactory extends Factory
     {
         //faker from oneof builtin classes used by factory contains
         //some built in methods to generate a specific type of dummytext
-        //eg sentence from a sentece of dummytext,none for comma-separated tags,
+        //eg sentence from a sentence of dummytext,none for comma-separated tags,
         //url for url etc...check below code
         return [
             'title' => $this->faker->sentence(), 
@@ -24,7 +24,7 @@ class GigsFactory extends Factory
             'location' => $this->faker->city(),
             'email' => $this->faker->companyEmail(),
             'website' => $this->faker->url(),
-            'description'=> $this->faker->paragraph()
+            'description'=> $this->faker->paragraph(5)
         ];
     }
 }
