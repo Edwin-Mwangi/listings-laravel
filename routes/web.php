@@ -64,5 +64,16 @@ Route::get('/listings/{id}', function ($id) {
     }else{
         abort('404');
     }
+});
 
+//route binding built into eloquent models..cleaner
+//alternative of above where no check required
+//listing/gig passed automatically in url and arg in func
+
+Route::get('/listings/{listing}', function (Listing $listing) {
+    return view('Gigs.listing',
+            [
+                'listing' => $listing
+            ]
+        );
 });
