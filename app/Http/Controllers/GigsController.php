@@ -15,7 +15,7 @@ class GigsController extends Controller
         'heading' => 'Latest Listing',
         // 'listings' => Gigs::all()
         //request tag used here
-        'listings' => Gigs::latest()->filter(request(['tag']))->get()
+        'listings' => Gigs::latest()->filter(request(['tag', 'search']))->get()
     ]
 );
 
