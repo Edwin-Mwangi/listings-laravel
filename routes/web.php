@@ -16,8 +16,19 @@ use App\Http\Controllers\GigsController;
 |
 */
 
+//these are also used as naming conventions for blade files
+// Common Resource Routes:
+// index - Show all listings
+// show - Show single listing
+// create - Show form to create new listing
+// store - Store new listing
+// edit - Show form to edit listing
+// update - Update listing
+
+
 //database seeder injects dummy users(u can pass how many users) to db using faker library ...brad 54:13 
 //php artisan db:seed
+//php artisan migrate:refresh --seed
 
 Route::get('/', function () {
     return view('welcome');

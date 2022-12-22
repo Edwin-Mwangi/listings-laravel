@@ -9,10 +9,13 @@ class GigsController extends Controller
 {
     //
     public function index(){
-        return view('Gigs.listings',
+        // dd(request());
+        return view('Gigs.index',
     [
         'heading' => 'Latest Listing',
-        'listings' => Gigs::all()
+        // 'listings' => Gigs::all()
+        //request tag used here
+        'listings' => Gigs::latest()->filter(request(['tag']))->get()
     ]
 );
 
@@ -20,7 +23,7 @@ class GigsController extends Controller
 
     //single gig
     public function show(Gigs $listing) {
-        return view('Gigs.listing',
+        return view('Gigs.show',
             [
                 'listing' => $listing
             ]

@@ -13,7 +13,7 @@
         class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
     >
         {{-- since will be clicking on each tag we also change href to tag query--}}
-        <a href="/?tag={{$tag}}">{{$tag}}</a>
+        <a href="/listings/?tag={{$tag}}">{{$tag}}</a>
     </li>
     @endforeach
   
