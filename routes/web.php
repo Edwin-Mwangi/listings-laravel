@@ -3,6 +3,7 @@
 use App\Models\Gigs;
 use App\Models\Example;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GigsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,38 +43,47 @@ Route::get('/examples/{id}', function ($id) {
 });
 
 //serious stuff
-Route::get('/listings', function () {
-    return view('Gigs.listings',
-    [
-        'heading' => 'Latest Listing',
-        'listings' => Gigs::all()
-    ]
-);
-});
+// Route::get('/listings', function () {
+//     return view('Gigs.listings',
+//     [
+//         'heading' => 'Latest Listing',
+//         'listings' => Gigs::all()
+//     ]
+// );
+// });
 
 //single listing
 //we also handle the error to show 404 if listing is nonexistent
-Route::get('/listings/{id}', function ($id) {
-    $listing = Gigs::find($id);
-    if($listing){
-        return view('Gigs.listing',
-            [
-                'listing' => $listing
-            ]
-        );
-    }else{
-        abort('404');
-    }
-});
+// Route::get('/listings/{id}', function ($id) {
+//     $listing = Gigs::find($id);
+//     if($listing){
+//         return view('Gigs.listing',
+//             [
+//                 'listing' => $listing
+//             ]
+//         );
+//     }else{
+//         abort('404');
+//     }
+// });
 
 //route binding built into eloquent models..cleaner
 //alternative of above where no check required
 //listing/gig passed automatically in url and arg in func
 
-Route::get('/listings/{listing}', function (Listing $listing) {
-    return view('Gigs.listing',
-            [
-                'listing' => $listing
-            ]
-        );
-});
+// Route::get('/listings/{listing}', function (Gigs $listing) {
+//     return view('Gigs.listing',
+//             [
+//                 'listing' => $listing
+//             ]
+//         );
+// });
+
+//we'll now use controllers for both all and single listing
+//commented code above
+
+//all listings
+Route::get('/listings', [GigsController::class, 'index']);
+
+//single Listing
+Route::get('/listings/{listing}', [GigsController::class, 'show']);
