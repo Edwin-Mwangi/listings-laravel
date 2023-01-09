@@ -14,6 +14,8 @@ class GigsController extends Controller
     [
         'heading' => 'Latest Listing',
         // 'listings' => Gigs::all()
+        //the filter is used to allow user to filter listings based on search terms and tags 
+        //...check Gigs.php
         //request tag used here
         'listings' => Gigs::latest()->filter(request(['tag', 'search']))->get()
     ]
