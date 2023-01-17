@@ -31,4 +31,9 @@ class GigsController extends Controller
             ]
         );
     }
+
+    //create job
+    public function create() {
+        return view ('Gigs.create');
+    }
 }

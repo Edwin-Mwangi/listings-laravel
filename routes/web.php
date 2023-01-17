@@ -96,5 +96,10 @@ Route::get('/examples/{id}', function ($id) {
 //all listings
 Route::get('/listings', [GigsController::class, 'index']);
 
+
+//create jobs
+//above single listing to avoid url conflict
+Route::get('/listings/create', [GigsController::class, 'create']);
+
 //single Listing
 Route::get('/listings/{listing}', [GigsController::class, 'show']);
