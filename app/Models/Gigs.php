@@ -9,6 +9,8 @@ class Gigs extends Model
 {
     use HasFactory;
 
+    // protected $fillable = ['title','email', 'tags', 'website', 'location', 'company', 'description'];
+
     public function scopeFilter($query, array $filters){
         // dd($filters['tag']);
         //if the array $filters with var tag exists..null coalesece used

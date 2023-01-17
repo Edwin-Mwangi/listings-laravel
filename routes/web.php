@@ -97,9 +97,17 @@ Route::get('/examples/{id}', function ($id) {
 Route::get('/listings', [GigsController::class, 'index']);
 
 
-//create jobs
+//goto create jobs form
 //above single listing to avoid url conflict
 Route::get('/listings/create', [GigsController::class, 'create']);
+
+//submit form data
+//1st post request
+Route::post('/listings', [GigsController::class, 'store']);
+
+
+
+
 
 //single Listing
 Route::get('/listings/{listing}', [GigsController::class, 'show']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gigs;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GigsController extends Controller
 {
@@ -32,8 +33,30 @@ class GigsController extends Controller
         );
     }
 
-    //create job
+    //goto create job 
     public function create() {
         return view ('Gigs.create');
     }
+
+    //submit form data
+    public function store(Request $request){        //depedency injection as an arg
+        // dd($request);
+        //simple validation in laravel...check docs 2:11:00
+        $formFields = $request->validate([
+            'title'=>'required',
+            //company must be unique...gigs is db table & company is db field
+            'company'=>['required', Rule::unique(['gigs','company'])],
+            'email'=>['required','email'],
+            'location'=>'required',
+            'website'=>'required',
+            'tags'=>'required',
+            'description'=>'required'          
+        ]);
+
+        Gigs::create($formFields);
+
+        return redirect('/');
+
+    }
+
 }
