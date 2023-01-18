@@ -55,7 +55,10 @@ class GigsController extends Controller
 
         Gigs::create($formFields);
 
-        return redirect('/');
+        //2 ways of sending flash message...session & with()
+
+        Session::flash('message','Listing created successfully');
+        return redirect('/');//->with('message','Listing created successfully')
 
     }
 
