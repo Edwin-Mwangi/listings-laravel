@@ -112,6 +112,8 @@ Route::get('/listings/{listing}/edit', [GigsController::class, 'edit']);
 //a put request
 Route::put('/listings/{listing}', [GigsController::class, 'update']);
 
+//delete listing
+Route::delete('/listings/{listing}', [GigsController::class, 'destroy']);
 
 //single Listing
 Route::get('/listings/{listing}', [GigsController::class, 'show']);
