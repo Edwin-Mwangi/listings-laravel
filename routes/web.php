@@ -4,6 +4,7 @@ use App\Models\Gigs;
 use App\Models\Example;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GigsController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,5 +116,11 @@ Route::put('/listings/{listing}', [GigsController::class, 'update']);
 //delete listing
 Route::delete('/listings/{listing}', [GigsController::class, 'destroy']);
 
+//AUTHENTICATION
+//register
+Route::get('/register', [UserController::class, 'create']);
+
+
 //single Listing
+//at the btm to prevent conflict
 Route::get('/listings/{listing}', [GigsController::class, 'show']);
