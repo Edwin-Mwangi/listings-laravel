@@ -36,4 +36,14 @@ class UserController extends Controller
         //redirect
         return redirect('/listings')->with('message','User created and logged in');
     }
+
+    //logout user
+    public function logout(Request $request){
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->invalidate();
+        
+        return redirect('/listings')->with('message','User logged out');
+    }
 }
