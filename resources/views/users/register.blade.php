@@ -20,6 +20,7 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="name"
+                    value={{old('name')}}
                 />
                 {{-- error msg --}}
                 @error('name')
@@ -37,6 +38,7 @@
                     type="email"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="email"
+                    value={{old('email')}}
                 />
                 @error('email')
                     <p class="text-red-500 text-xs mt-1">
@@ -58,6 +60,7 @@
                     type="password"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="password"
+                    value={{old('password')}}
                 />
                 @error('password')
                     <p class="text-red-500 text-xs mt-1">
@@ -68,7 +71,7 @@
 
             <div class="mb-6">
                 <label
-                    for="password2"
+                    for="password_confirmation"
                     class="inline-block text-lg mb-2"
                 >
                     Confirm Password
@@ -77,6 +80,7 @@
                     type="password"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="password_confirmation"
+                    value={{old('password_confirmation')}}
                 />
                 @error('password_confirmation')
                     <p class="text-red-500 text-xs mt-1">

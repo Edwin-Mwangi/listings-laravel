@@ -58,7 +58,7 @@ class GigsController extends Controller
         //2 ways of sending flash message...session & with()
 
         Session::flash('message','Listing created successfully');
-        return redirect('/');//->with('message','Listing created successfully')
+        return redirect('/listings');//->with('message','Listing created successfully')
 
     }
 
@@ -70,7 +70,7 @@ class GigsController extends Controller
 
     //update listing(edit listing)
     public function update(Request $request, Gigs $listing){        //depedency injection as an arg
-      
+      //validate helper method to validate field data
         $formFields = $request->validate([
             'title'=>'required',
             //rule in company removed unlike store..coz will hinder update(unique company)..haha
@@ -97,7 +97,7 @@ class GigsController extends Controller
     //delete listing
     public function destroy(Listing $listing){
         $listing -> delete();
-        return redirect('/')->with('message','Listing deleted successfully');
+        return redirect('/listings')->with('message','Listing deleted successfully');
     }
 
 }

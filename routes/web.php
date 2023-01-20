@@ -117,8 +117,13 @@ Route::put('/listings/{listing}', [GigsController::class, 'update']);
 Route::delete('/listings/{listing}', [GigsController::class, 'destroy']);
 
 //AUTHENTICATION
-//register
+//goto register form
 Route::get('/register', [UserController::class, 'create']);
+
+//create/register new user
+Route::post('/users', [UserController::class, 'store']);
+
+
 
 
 //single Listing
