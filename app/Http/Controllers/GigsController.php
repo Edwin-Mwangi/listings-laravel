@@ -62,4 +62,36 @@ class GigsController extends Controller
 
     }
 
+    //goto edit form 
+    public function edit(Gigs $listing){
+        // dd($listing->title);
+        return view("Gigs.edit", ['listing' => $listing]);
+    }
+
+    //update listing(edit listing)
+    public function update(Request $request, Gigs $listing){        //depedency injection as an arg
+      
+        $formFields = $request->validate([
+            'title'=>'required',
+            //rule in company removed unlike store..coz will hinder update(unique company)..haha
+            'company'=>'required',
+            'email'=>['required','email'],
+            'location'=>'required',
+            'website'=>'required',
+            'tags'=>'required',
+            'description'=>'required'          
+        ]);
+
+        //store() used static method(Gigs::create)
+        //we'll use reqular method coz listing is an arg in public func update()
+        //also method changes from create() to update()
+        $listing->update($formFields);
+        
+
+        // Session::flash('message','Listing created successfully');
+        return back()->with('message','Listing updated successfully');
+        //back() returns to prev page
+
+    }
+
 }

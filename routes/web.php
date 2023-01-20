@@ -105,8 +105,12 @@ Route::get('/listings/create', [GigsController::class, 'create']);
 //1st post request
 Route::post('/listings', [GigsController::class, 'store']);
 
+//show edit form
+Route::get('/listings/{listing}/edit', [GigsController::class, 'edit']);
 
-
+//submit edit form data(update listing)
+//a put request
+Route::put('/listings/{listing}', [GigsController::class, 'update']);
 
 
 //single Listing
