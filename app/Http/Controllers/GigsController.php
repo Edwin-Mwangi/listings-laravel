@@ -98,9 +98,19 @@ class GigsController extends Controller
     }
 
     //delete listing
-    public function destroy(Listing $listing){
+    public function destroy(Gigs $listing){
         $listing -> delete();
         return redirect('/listings')->with('message','Listing deleted successfully');
     }
+
+    //manage lisings for authed users
+    public function manage(Gigs $listing){
+        return view('Gigs.manage', [
+            //get listings of current user
+            'listings' => auth()->user()->gigs()->get()
+        ]);
+    }
+
+
 
 }

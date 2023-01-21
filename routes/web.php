@@ -97,6 +97,9 @@ Route::get('/examples/{id}', function ($id) {
 //all listings
 Route::get('/listings', [GigsController::class, 'index']);
 
+//manage listings for each user
+Route::get('/listings/manage', [GigsController::class, 'manage'])->middleware('auth');
+
 
 //goto create jobs form
 //above single listing to avoid url conflict
@@ -117,6 +120,12 @@ Route::put('/listings/{listing}', [GigsController::class, 'update'])->middleware
 //delete listing
 Route::delete('/listings/{listing}', [GigsController::class, 'destroy'])->middleware('auth');
 
+
+//single Listing
+//at the btm to prevent conflict
+Route::get('/listings/{listing}', [GigsController::class, 'show']);
+
+
 //AUTHENTICATION
 //goto register form
 //only unauthenticated users(guests) can access register
@@ -135,7 +144,3 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 
-
-//single Listing
-//at the btm to prevent conflict
-Route::get('/listings/{listing}', [GigsController::class, 'show']);
