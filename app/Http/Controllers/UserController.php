@@ -37,12 +37,38 @@ class UserController extends Controller
         return redirect('/listings')->with('message','User created and logged in');
     }
 
+    // goto login form
+    public function login(){
+        return view('users.login');
+    }
+    //login user
+    public function authenticate(Request $request){
+        $formFields = $request->validate([
+            //no password confirmation coz it's a login
+            'email' => ['required', 'email'],
+            'password' => 'required'  
+
+        ]);
+
+        if(auth()->attempt($formFields)){
+            $request->session()->regenerate();
+            return redirect('/listings')->with("message", "You are now logged in");
+        }
+        // if auth attempt fails
+        //withErrors and onlyInput are laravel methods...
+        //we dont want person to know email exists do we generalise to invalid
+        //error put below email field
+        return back()->withErrors([ 'email' => 'Invalid Credentials'])->onlyInput('email');
+
+    }
+
     //logout user
     public function logout(Request $request){
         auth()->logout();
 
+        //recommended to invadate user session and regenerate @csrf token
         $request->session()->invalidate();
-        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         
         return redirect('/listings')->with('message','User logged out');
     }
