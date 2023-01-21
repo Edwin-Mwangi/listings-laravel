@@ -100,21 +100,21 @@ Route::get('/listings', [GigsController::class, 'index']);
 
 //goto create jobs form
 //above single listing to avoid url conflict
-Route::get('/listings/create', [GigsController::class, 'create']);
+Route::get('/listings/create', [GigsController::class, 'create'])->middleware('auth');
 
 //submit form data
 //1st post request
-Route::post('/listings', [GigsController::class, 'store']);
+Route::post('/listings', [GigsController::class, 'store'])->middleware('auth');
 
 //show edit form
-Route::get('/listings/{listing}/edit', [GigsController::class, 'edit']);
+Route::get('/listings/{listing}/edit', [GigsController::class, 'edit'])->middleware('auth');
 
 //submit edit form data(update listing)
 //a put request
-Route::put('/listings/{listing}', [GigsController::class, 'update']);
+Route::put('/listings/{listing}', [GigsController::class, 'update'])->middleware('auth');
 
 //delete listing
-Route::delete('/listings/{listing}', [GigsController::class, 'destroy']);
+Route::delete('/listings/{listing}', [GigsController::class, 'destroy'])->middleware('auth');
 
 //AUTHENTICATION
 //goto register form
@@ -124,10 +124,10 @@ Route::get('/register', [UserController::class, 'create']);
 Route::post('/users', [UserController::class, 'store']);
 
 //logout user
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 //show login form
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login');
 
 //login user
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
