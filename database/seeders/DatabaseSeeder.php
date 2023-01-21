@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Gigs;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,14 +14,25 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        \App\Models\User::factory(10)->create();
+    {   
+        //for 10 users
+        // \App\Models\User::factory(10)->create();
+
+        //for 1 user
+        //create() is used here to create custom name and email
+        $user = User::factory()->create([
+            'name' => 'cheche makweche',
+            'email' => 'cheche@gmail.com'
+        ]);
 
         //you can artifiaccly create dummy text using ur own factory
         //php artisan make:factory GigsFactory
         //then in Gigsfactory,in definition(), key in return data 
         //using the gigsfactory
-        Gigs::factory(6)->create();            
+        Gigs::factory(6)->create([
+            //user_id defined
+            'user_id' => $user->id
+        ]);            
 
 
         //manually created

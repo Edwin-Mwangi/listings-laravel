@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //relationship of user with gigs/listings
+    // user can have many listings..connected with user_id
+    public function gigs(){
+        return $this->hasMany(Gig::class, 'user_id');
+    }
 }
