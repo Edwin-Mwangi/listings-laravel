@@ -53,6 +53,9 @@ class GigsController extends Controller
             'description'=>'required'          
         ]);
 
+        //assigning the userid var value from id of currently loggedin(authed) user 
+        $formFields['user_id'] = auth()->id();
+
         Gigs::create($formFields);
 
         //2 ways of sending flash message...session & with()
