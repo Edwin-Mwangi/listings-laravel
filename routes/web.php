@@ -100,6 +100,7 @@ Route::get('/listings', [GigsController::class, 'index']);
 
 //goto create jobs form
 //above single listing to avoid url conflict
+//onlu authenticated users(auth) can access this route
 Route::get('/listings/create', [GigsController::class, 'create'])->middleware('auth');
 
 //submit form data
@@ -118,7 +119,8 @@ Route::delete('/listings/{listing}', [GigsController::class, 'destroy'])->middle
 
 //AUTHENTICATION
 //goto register form
-Route::get('/register', [UserController::class, 'create']);
+//only unauthenticated users(guests) can access register
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 //create/register new user
 Route::post('/users', [UserController::class, 'store']);
@@ -127,7 +129,7 @@ Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 //show login form
-Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 //login user
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
