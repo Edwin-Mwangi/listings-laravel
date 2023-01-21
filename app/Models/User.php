@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Gigs;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,6 @@ class User extends Authenticatable
     //relationship of user with gigs/listings
     // user can have many listings..connected with user_id
     public function gigs(){
-        return $this->hasMany(Gig::class, 'user_id');
+        return $this->hasMany(Gigs::class, 'user_id');
     }
 }
