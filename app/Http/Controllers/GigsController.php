@@ -45,7 +45,7 @@ class GigsController extends Controller
         $formFields = $request->validate([
             'title'=>'required',
             //company must be unique...gigs is db table & company is db field
-            'company'=>['required', Rule::unique(['gigs','company'])],
+            'company'=>['required', Rule::unique('gigs','company')],
             'email'=>['required','email'],
             'location'=>'required',
             'website'=>'required',
@@ -60,8 +60,8 @@ class GigsController extends Controller
 
         //2 ways of sending flash message...session & with()
 
-        Session::flash('message','Listing created successfully');
-        return redirect('/listings');//->with('message','Listing created successfully')
+        // Session::flash('message','Listing created successfully');
+        return redirect('/listings')->with('message','Listing created successfully');
 
     }
 
@@ -73,6 +73,12 @@ class GigsController extends Controller
 
     //update listing(edit listing)
     public function update(Request $request, Gigs $listing){        //depedency injection as an arg
+
+        //make sure logged in in user is owner
+        if($listing->user_id != auth()->id()){
+            abort(403, "Unauthorised action");
+        }
+
       //validate helper method to validate field data
         $formFields = $request->validate([
             'title'=>'required',
@@ -99,6 +105,12 @@ class GigsController extends Controller
 
     //delete listing
     public function destroy(Gigs $listing){
+
+        //make sure logged in in user is owner before delete
+        if($listing->user_id != auth()->id()){
+            abort(403, "Unauthorised action");
+        }
+
         $listing -> delete();
         return redirect('/listings')->with('message','Listing deleted successfully');
     }
