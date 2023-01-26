@@ -1,5 +1,5 @@
 {{-- defining slot --}}
-{{-- this slot is used by listing.blade.php check --}}
+{{-- this slot is used by show.blade.php check --}}
 
 {{-- <div class="bg-gray-50 border border-gray-200 p-10 rounded">
     {{$slot}}

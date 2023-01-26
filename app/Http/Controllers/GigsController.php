@@ -116,7 +116,7 @@ class GigsController extends Controller
     }
 
     //manage lisings for authed users
-    public function manage(Gigs $listing){
+    public function manage(Gigs $listings){
         return view('Gigs.manage', [
             //get listings of current user
             'listings' => auth()->user()->gigs()->get()

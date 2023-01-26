@@ -30,7 +30,7 @@
                     </span>
                 </li>
                 <li>
-                    <a href="/manage" class="hover:text-laravel"
+                    <a href="/listings/manage" class="hover:text-laravel"
                         ><i class="fa-solid fa-gear"></i>
                         Manage Listings</a
                     >

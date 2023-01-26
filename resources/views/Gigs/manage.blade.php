@@ -13,12 +13,12 @@
         <table class="w-full table-auto rounded-sm">
             <tbody>
                 @unless ($listings->isEmpty())
-                    @foreach ($listings as $listings)
+                    @foreach ($listings as $listing)
                         <tr class="border-gray-300">
                             <td
                                 class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                             >
-                                <a href="/listings/{{listings->id}}">
+                                <a href="/listings/{{$listing['id']}}">
                                    {{$listing->title}}
                                 </a>
                             </td>
@@ -26,7 +26,7 @@
                                 class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                             >
                                 <a
-                                    href="/listings/{{listings->id}}/edit"
+                                    href="/listings/{{$listing['id']}}/edit"
                                     class="text-blue-400 px-6 py-2 rounded-xl"
                                     ><i
                                         class="fa-solid fa-pen-to-square"
@@ -37,7 +37,7 @@
                             <td
                                 class="px-4 py-8 border-t border-b border-gray-300 text-lg"
                             >
-                                <form method="POST" action="/listings/{{listings->id}}">
+                                <form method="POST" action="/listings/{{$listing['id']}}">
                                     @csrf
                                     @method('DELETE')
                                     <button class="text-red-600">
