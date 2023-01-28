@@ -1,7 +1,6 @@
 {
     "private": true,
     "scripts": {
-        "build-css": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css --watch",
         "dev": "npm run development",
         "development": "mix",
         "watch": "mix watch",

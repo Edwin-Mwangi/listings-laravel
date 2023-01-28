@@ -36,7 +36,7 @@
                     >
                 </li>
                 <li>
-                    <form class="inline" method="POST" action="/logout">
+                    <form class="inline" method="GET" action="/logout">
                         @csrf
                         <i class="fa-solid fa-door-closed"></i>
                         <button type="submit">Logout</button>
