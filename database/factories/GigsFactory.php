@@ -13,6 +13,7 @@ class GigsFactory extends Factory
      */
     public function definition()
     {
+        //check DatabaseSeeder.php to use this class and its methods
         //faker from oneof builtin classes used by factory contains
         //some built in methods to generate a specific type of dummytext
         //eg sentence from a sentence of dummytext,none for comma-separated tags,

@@ -6,3 +6,4 @@
 <p>{{$listing['base']}}</p>
 @endforeach
 
+<!-- many directives @foreach, @if, @unless -->

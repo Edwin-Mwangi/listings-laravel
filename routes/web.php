@@ -31,6 +31,30 @@ use App\Http\Controllers\UserController;
 //php artisan db:seed
 //php artisan migrate:refresh --seed
 
+// //simplest return with str returned
+//Route::get('/hello', function () {
+    //     return 'hello world</h1>';
+
+// //response allows you to include HTML, status & headers
+// Route::get('/hello', function () {
+//     return response('<h1>hello world</h1>', 200)
+//         ->header('Content-Type','text/plain')
+//         ->header('foo','bar');
+// });
+
+// //wildcard..{}
+// Route::get('/posts/{id}', function ($id) {
+//     //ddd($id);
+//     return response('Post' . $id);
+// })->where('id', '[0-9]+');
+
+// //Request class
+// Route::get('/search', function (Request $request) {
+//     dd($request);
+//     //return $request->name . ' ' . $request->city;
+// });
+
+//NB: Your views can be normal php files or blade files ie "home.php" or "home.blade.php"
 Route::get('/', function () {
     return view('welcome');
 });

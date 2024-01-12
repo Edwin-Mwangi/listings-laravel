@@ -11,9 +11,11 @@ class Gigs extends Model
 
     // protected $fillable = ['title','email', 'tags', 'website', 'location', 'company', 'description'];
 
+    //to filter gigs based on tags in the url query eg .../?tag='laravel'
+    //( we use a scopeFilter) //check Gigscontroller to see filter used
     public function scopeFilter($query, array $filters){
-        // dd($filters['tag']);
-        //if the array $filters with var tag exists..null coalesece used
+        // dd($filters['tag']); 
+        //if the array $filters with var tag exists(gets tags from url)..null coalesece used
         if($filters['tag'] ?? false){
             $query->where('tags', 'like', '%'.request('tag').'%');
         }

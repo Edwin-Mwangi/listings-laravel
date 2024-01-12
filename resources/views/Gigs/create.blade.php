@@ -14,6 +14,9 @@
 
         <form method="POST" action="/listings">
             @csrf
+            {{-- sometimes in forms spaces might be intepreted as Underscores in browser --}}
+            {{-- so u use keyword to define space ie(nonbreaking space) &nbsp; --}}
+            {{-- for example if name(Last Name) has space name="Last&nbsp;Name" --}}
             <div class="mb-6">
                 <label
                     for="company"
